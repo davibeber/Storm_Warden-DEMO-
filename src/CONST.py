@@ -1,10 +1,12 @@
 # C
 COLOR_WHITE = (255,255,255)
 
+COLOR_YELLOW = (253,255,0)
+
 
 # M
 MENU_OPTION = (
-    'jogar',
-    'SCORE',
-    'SAIR'
+    "JOGAR",
+    "SCORE",
+    "SAIR"
 )

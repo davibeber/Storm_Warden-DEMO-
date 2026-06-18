@@ -1,9 +1,15 @@
+from xml.dom.minidom import Entity
+
+
 class Level:
-    def __init__(self):
-        self.window=None
-        self.name=None
-        self.entity_list=None
-        self.entity_list=None
+    def __init__(self, window, name, menu_option):
+        self.window=window
+        self.name=name
+        self.entity_list= list[Entity]=[]
+
+
+
+        # O estilo do meu jogo (game_mode) será apenas single player.
 
     
     def run(self,):
