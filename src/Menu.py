@@ -59,6 +59,8 @@ class Menu:
 
 
 
+
+
             # Check for all events / Confira todos os eventos
             for events in pygame.event.get():
                 if events.type == pygame.QUIT:
@@ -95,9 +97,12 @@ class Menu:
 
     # o texto acaba virando uma imagem
 
+
+    # Uma função pega em videoaula para uso provisório
+    # Com o decorrer dos estudos, talvez eu altere para algo mais autoral
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         # tuple = tuplas
-        
+
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
