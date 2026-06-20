@@ -24,8 +24,15 @@ class EntityFactory:
             case "Level1Pfr":
                 list_pfr = []
                 for i in range(1):
-                    plataforma = f"./assets/plataformer/Level1Pfr{i}.png"
-                    list_pfr.append(Background(plataforma, (0,265)))
+                    plataforma = f"./assets/plataformer/Level1Pfr0.png"
+
+
+
+                for j in range(20):
+                    pos_x = j * 128  # Multiplica o índice atual pelo tamanho do bloco (0, 128, 256...)
+                    pos_y = 265  # Altura fixa do chão na tela
+                    # list_pfr.append(Background(plataforma, (0,265)))
+                    list_pfr.append(Background(plataforma, (pos_x, pos_y)))
                 return list_pfr
 
 
