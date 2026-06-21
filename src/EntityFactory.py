@@ -1,4 +1,6 @@
 from src.Background import Background
+from src.Player import Player
+
 
 # from src.Player import Player
 # from src.Enemy import Enemy
@@ -24,7 +26,7 @@ class EntityFactory:
             case "Level1Pfr":
                 list_pfr = []
                 for i in range(1):
-                    plataforma = f"./assets/plataformer/Level1Pfr0.png"
+                    plataforma = f"./assets/plataformer/Level1Pfr{i}.png"
 
 
 
@@ -35,11 +37,15 @@ class EntityFactory:
                     list_pfr.append(Background(plataforma, (pos_x, pos_y)))
                 return list_pfr
 
+            case "Idle":
+                list_idle = []
+                for i in range(1):
+                    characters = f"./assets/characters/Knight_1/Idle.png"
+                    list_idle.append(Background(characters, (0,0)))
+                return list_idle
 
 
-
-
-                # pq match e não swtich case? qual a diferença?
+                # pq match e não switch case? qual a diferença?
                 # Não há literalmente um switch (trocar) case no python, tal funcionalidade só foi
                 # adicionada em 2021, o match (combinar) case, um switch 2.0 que interpreta coisas alem
                 # de números e não precisa de "break".
