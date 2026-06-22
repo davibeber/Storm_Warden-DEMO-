@@ -10,3 +10,8 @@ MENU_OPTION = (
     "SCORE",
     "SAIR"
 )
+
+
+
+WIN_WIDTH =576
+WIN_HEIGHT =324

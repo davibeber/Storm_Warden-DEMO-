@@ -3,7 +3,7 @@ import sys
 # o que é sys?
 # É um módulo nativo do Python (System).
 
-from src.CONST import MENU_OPTION
+from src.CONST import MENU_OPTION, WIN_WIDTH, WIN_HEIGHT
 from src.Level import Level
 from src.Menu import Menu
 
@@ -12,7 +12,7 @@ class Game: # Classe controle
     def __init__(self):
         pygame.init()  # inicia o uso do pygame
         # Criando a "janela" para o jogo
-        self.window = pygame.display.set_mode(size=(576, 324))
+        self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT ))
         # Padrão tela pequena 576, 324
         # Tamanho maximo da minha tela 1920, 1080
         self.clock = pygame.time.Clock() # O que seria o Clock? relogio, ok, mas provavelmente tem relação com giro

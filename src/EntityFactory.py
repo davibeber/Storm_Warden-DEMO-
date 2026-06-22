@@ -37,11 +37,12 @@ class EntityFactory:
                     list_pfr.append(Background(plataforma, (pos_x, pos_y)))
                 return list_pfr
 
-            case "Idle":
+            case "Idle": # Não seria melhor mudar para algo mais genérico como "case knight"?
+                # E dps disso, criar funções que descrevem, "enquanto kinght parado ou sem resposta do teclado = idle"?
                 list_idle = []
                 for i in range(1):
                     characters = f"./assets/characters/Knight_1/Idle.png"
-                    list_idle.append(Background(characters, (0,0)))
+                    list_idle.append(Background(characters, (0,146)))
                 return list_idle
 
 

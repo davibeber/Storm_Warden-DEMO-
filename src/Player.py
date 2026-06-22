@@ -21,5 +21,6 @@ class Player:
 
         for ent in self.Player_list:
             self.window.blit(source=ent.surf, dest=ent.rect)
+
         return None
 

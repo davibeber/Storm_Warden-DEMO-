@@ -4,6 +4,8 @@ import pygame.image
 
 class Entity(ABC): # Evita repetição de codigo
     def __init__(self, name: str,position: tuple):
+        self.Player = None
+        self.background = None
         self.name = name
         # Agora o 'name' já deve vir com o caminho completo e correto de onde ele estiver
 
