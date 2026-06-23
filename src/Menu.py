@@ -8,7 +8,7 @@ from src.CONST import MENU_OPTION, COLOR_WHITE, COLOR_YELLOW
 class Menu:
     def __init__(self,window):
         self.window=window
-        self.surf= pygame.image.load("./assets/backgrounds/PRE_ORIG_SIZE.png")
+        self.surf= pygame.image.load("./assets/backgrounds/PRE_ORIG_SIZE.png").convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
         # Surface (Superficie) = imagem, visual

@@ -1,4 +1,4 @@
-
+import sys
 
 import pygame
 
@@ -27,7 +27,7 @@ class Level:
 
         # O estilo do meu jogo (game_mode) será apenas single player.
         # append(objeto) --> pega um unico objeto e poe dentro da caixa. caso tiver mais de um,
-        # ele junta tudo e como se fosse um só, provavelmente isso interefere no efeito parallax
+        # ele junta tudo e como se fosse um só, provavelmente isso interfere no efeito parallax
 
         # extend(lista) --> os assets são pegos e postos de forma isolada para alterar individualmente
 
@@ -38,6 +38,15 @@ class Level:
 
         for ent in self.entity_list:
             self.window.blit(source=ent.surf,dest=ent.rect)
-            ent.move()
+            # ent.move()
+            # aqui seria um:  ent.move() = velocidade_jogador ?
+
+        pygame.display.flip()
+        # Comando responsável por atualizar a tela do jogo para mostrar as últimas mudanças feitas.
+        # Faz um pré-carregamento para dps atualizar a tela.
+        # Sem isso, a tela estaria piscando, o efeito "flickering", pois está atualizando em tempo real
+        # A expressão "Ta flickando" vem daí.
+        # Aconteceu cmg enquanto carregava os assets para o background do Leve_1, esqueci o comando flip()
+
         return None
 

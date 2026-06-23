@@ -9,8 +9,10 @@ class Entity(ABC): # Evita repetição de codigo
         self.name = name
         # Agora o 'name' já deve vir com o caminho completo e correto de onde ele estiver
 
-        self.surf= pygame.image.load(name)
-        # self.surf = pygame.image.load(name).convert_alpha()
+        self.surf=pygame.image.load(name).convert_alpha()
+        # convert_alpha() --> otimiza as imagens
+        # Como assim otimiza? acredito que seja algo para o proprio jogo ser executado de forma mais fluida
+        # porem quase inperceptivel aos olhos do jogador
 
         self.rect = self.surf.get_rect(left=position[0],top=position[1])
         self.speed = 0

@@ -1,3 +1,5 @@
+from pygame.examples.grid import WINDOW_WIDTH
+
 from src.Entity import Entity
 
 
@@ -7,6 +9,8 @@ class Background(Entity):
 
     def move(self):
         self.rect.centerx -=1
-        pass
+        if self.rect.right<=0:
+            self.rect.left += WINDOW_WIDTH
+
 
 

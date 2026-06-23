@@ -46,3 +46,39 @@ class Game: # Classe controle
 
             pygame.display.flip()
             self.clock.tick(60)  # Garante 60 FPS para o jogo todo (menu, Level 1, Level 2...)
+
+
+
+
+
+
+
+
+
+
+            # TODO - PARA RODAR A MUSICA DO LEVEL 1
+            pygame.mixer_music.load()
+            pygame.mixer_music.play(-1)
+            clock = pygame.time.Clock()
+            # Garantir que rode num clock especifico, FPS travado na qual for escolhido
+
+            while True:
+                clock.tick(60)
+
+                for ent in self.entity_list:
+                    self.window.blit(source=ent.surf, dest=ent.rect)
+                    ent.move()
+
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+
+
+
+            # TODO - PRINT DO FPS
+            # printed text
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000:.1f}s', COLOR_WHITE, (10, 5))
+            self.level_text(14, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'entidades: {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 20))
+            pygame.display.flip()

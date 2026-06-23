@@ -1,7 +1,8 @@
 
 
 class Player:
-    def __init__(self, window, name):
+    def __init__(self, window, name:str):
+        self.window = window
         self.window = window
         self.name = name
         self.Player_list: list=[]
