@@ -44,10 +44,10 @@ class EntityFactory:
                 list_idle = []
 
 
-                
+
                 for i in range(1):
                     characters = f"./assets/characters/Knight_1/Idle.png"
-                    list_idle.append(Background(characters, (0,146)))
+                    list_idle.append(Background(characters, (0,206)))
                 return list_idle
 
 
