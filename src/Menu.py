@@ -24,7 +24,7 @@ class Menu:
 
         # O Python não adota a escrita camelCase, então usa underscore ("_") por regra visual
 
-    def run(self,):
+    def run(self, dt=0):
 
         menu_option = 0
         # Pq isso aqui funcionou?

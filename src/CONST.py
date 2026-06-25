@@ -25,5 +25,10 @@ ENTITY_SPEED = {
 
 
 # W
-WIN_WIDTH =576
-WIN_HEIGHT =324
+WIN_WIDTH =576 # largura
+WIN_HEIGHT =324 # altura
+
+
+
+# Cor padrao de fundo:
+BG = (50,50,50) # USE : screen.fill(BG)
