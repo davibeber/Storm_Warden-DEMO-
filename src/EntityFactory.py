@@ -232,4 +232,83 @@ class EntityFactory:
                     list_anim.append(obj)
                 return list_anim
 
+            # ---BOSS---
+            case "B_idle":
+                list_anim = []
+                caminho = "./assets/mobs/orc_beserk/B_idle.png"
+                sheet = pygame.image.load(caminho).convert_alpha()
+                for x in range(5):
+                    surf = EntityFactory.get_image(sheet, x, 96, 96, 1)
+                    obj = Background(caminho, (0, 0))
+                    obj.surf = surf
+                    obj.rect = surf.get_rect(topleft=(0, 0))
+                    list_anim.append(obj)
+                return list_anim
+
+
+
+
+
+
+            case "B_walk":
+                list_anim = []
+                caminho = "./assets/mobs/orc_beserk/B_walk.png"
+                sheet = pygame.image.load(caminho).convert_alpha()
+                for x in range(7):
+                    surf = EntityFactory.get_image(sheet, x, 96, 96, 1)
+                    obj = Background(caminho, (0, 0))
+                    obj.surf = surf
+                    obj.rect = surf.get_rect(topleft=(0, 0))
+                    list_anim.append(obj)
+                return list_anim
+
+            case "B_attack":
+                list_anim = []
+                for x in range(4):
+                    caminho = f"./assets/mobs/orc_beserk/B_attack_{x}.png"
+                    sheet = pygame.image.load(caminho).convert_alpha()
+                    for x in range(9):
+                        surf = EntityFactory.get_image(sheet, x, 96, 96, 1)
+                        obj = Background(caminho, (0, 0))
+                        obj.surf = surf
+                        obj.rect = surf.get_rect(topleft=(0, 0))
+                        list_anim.append(obj)
+                    return list_anim
+
+            case "B_run+attack":
+                list_anim = []
+                caminho = f"./assets/mobs/orc_beserk/B_run+attack.png"
+                sheet = pygame.image.load(caminho).convert_alpha()
+                for x in range(5):
+                    surf = EntityFactory.get_image(sheet, x, 96, 96, 1)
+                    obj = Background(caminho, (0, 0))
+                    obj.surf = surf
+                    obj.rect = surf.get_rect(topleft=(0, 0))
+                    list_anim.append(obj)
+                return list_anim
+
+
+            case "B_hurt":
+                list_anim = []
+                caminho = f"./assets/mobs/orc_beserk/B_hurt.png"
+                sheet = pygame.image.load(caminho).convert_alpha()
+                for x in range(2):
+                    surf = EntityFactory.get_image(sheet, x, 96, 96, 1)
+                    obj = Background(caminho, (0, 0))
+                    obj.surf = surf
+                    obj.rect = surf.get_rect(topleft=(0, 0))
+                    list_anim.append(obj)
+                return list_anim
+
+            case "B_dead":
+                list_anim = []
+                caminho = f"./assets/mobs/orc_beserk/B_dead.png"
+                sheet = pygame.image.load(caminho).convert_alpha()
+                for x in range(4):
+                    surf = EntityFactory.get_image(sheet, x, 96, 96, 1)
+                    obj = Background(caminho, (0, 0))
+                    obj.surf = surf
+                    obj.rect = surf.get_rect(topleft=(0, 0))
+                    list_anim.append(obj)
+                return list_anim
         return None

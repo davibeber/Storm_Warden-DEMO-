@@ -22,18 +22,44 @@ class Instructions:
     def _draw_comandos(self):
         font = pygame.font.SysFont("Lucida Sans Typewriter", 14)
         comandos = [
+            ("       COMANDOS", COLOR_WHITE),
             ("Defesa: Q", COLOR_WHITE),
             ("Andar para esquerda: A", COLOR_WHITE),
             ("Andar para direita: D", COLOR_WHITE),
             ("Pular: Espaço", COLOR_WHITE),
             ("Ataque: Botão esquerdo", COLOR_WHITE),
-            (" do mouse", COLOR_WHITE),
+            ("do mouse", COLOR_WHITE),
             ("Pressione qualquer tecla", (253, 255, 0)),
             ("     para voltar", (253, 255, 0)),
         ]
         x = 65
-        y_inicial = 50
-        espacamento = 35
+        y_inicial = 40
+        espacamento = 28
+
+        for i, (texto, cor) in enumerate(comandos):
+            y = y_inicial + i * espacamento
+            surf = font.render(texto, True, cor)
+            self.window.blit(surf, (x, y))
+
+
+# Elimine todos os orcs em sua caminho e vença o chefe para concluir a fase.
+        # Mantenha sua integridade e cumpra o objetivo.
+
+
+
+        font = pygame.font.SysFont("Lucida Sans Typewriter", 14)
+        comandos = [
+            ("         MISSÂO", COLOR_WHITE),
+            ("Elimine todos os orcs em", COLOR_WHITE),
+            ("seu caminho e vença o", COLOR_WHITE),
+            ("chefe para concluir", COLOR_WHITE),
+            ("a fase. Mantenha sua vida", COLOR_WHITE),
+            ("com as poções que os orcs", COLOR_WHITE),
+            ("deixam cair", COLOR_WHITE),
+        ]
+        x = 333
+        y_inicial = 40
+        espacamento = 28
 
         for i, (texto, cor) in enumerate(comandos):
             y = y_inicial + i * espacamento

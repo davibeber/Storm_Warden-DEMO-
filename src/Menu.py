@@ -9,7 +9,7 @@ class Menu:
         self.window = window
 
         # Carregamento separado para evitar sobreposição
-        self.bg_surf = pygame.image.load("./assets/backgrounds/orig_lightning.png").convert_alpha()
+        self.bg_surf = pygame.image.load("./assets/backgrounds/PRE_ORIG_SIZE.png").convert_alpha()
         self.logo_surf = pygame.image.load("./assets/GUI/logo.png").convert_alpha()
 
         # Definição dos retângulos de posicionamento

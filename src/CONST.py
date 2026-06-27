@@ -6,7 +6,7 @@ COLOR_YELLOW = (253,255,0)
 
 # M
 # No seu arquivo src/CONST.py
-MENU_OPTION = ("Jogar", "Como jogar", "Sair")
+MENU_OPTION = ("Jogar", "Comandos e Missão", "Sair")
 
 # E  # Essa constante aqui
 ENTITY_SPEED = {
