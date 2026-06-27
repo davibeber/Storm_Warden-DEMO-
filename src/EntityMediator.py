@@ -11,7 +11,7 @@ class EntityMediator:
         # --- Configurações da Horda ---
         self.max_enemies = 10
         self.enemies_spawned = 0
-        self.spawn_cooldown = 5000
+        self.spawn_cooldown = 3000
         self.last_spawn_time = pygame.time.get_ticks()
 
     def register_player(self, player):
@@ -19,11 +19,10 @@ class EntityMediator:
 
     def spawn_enemy_outside_screen(self, camera_x):
         if self.enemies_spawned < self.max_enemies:
-            # Spawna logo fora da borda direita da tela (não longe demais)
             pos_x_fora_da_tela = camera_x + WIN_WIDTH + 50
             pos_y_chao = 170
             novo_orc = Enemy("Orc_Warrior", (pos_x_fora_da_tela, pos_y_chao))
-            novo_orc.speed = 70   # velocidade suficiente para cruzar a tela em ~5s
+            novo_orc.speed = 70
             self.enemy_list.append(novo_orc)
             self.enemies_spawned += 1
 
@@ -40,7 +39,7 @@ class EntityMediator:
         # Posição real do player no mundo (tela + offset da câmera)
         player_real_x = self.player.rect.x + camera_x
 
-        # Rect do player em coordenadas de MUNDO para colisão correta
+        # Rect do player em coordenadas de mundo para colisão correta
         player_world_rect = self.player.rect.move(camera_x, 0)
 
         for enemy in self.enemy_list[:]:
@@ -58,14 +57,16 @@ class EntityMediator:
                 self.player.ja_causou_dano = True
 
             # 3. Orc ataca Player
+            #    Se o player estiver defendendo (Q), o golpe é bloqueado sem causar dano
             if (
                 enemy.state == "orc_attack_1"
                 and enemy.esta_no_frame_de_ataque()
                 and not enemy.ja_causou_dano
                 and enemy.rect.colliderect(player_world_rect)
             ):
-                self.player.take_damage(10)
-                enemy.ja_causou_dano = True
+                if self.player.state != "defend":
+                    self.player.take_damage(10)
+                enemy.ja_causou_dano = True  # orc não repete o hit mesmo se bloqueado
 
             # 4. Remove orcs mortos após animação terminar
             if enemy.state == "orc_dead" and enemy.is_animation_finished():
