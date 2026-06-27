@@ -1,110 +1,67 @@
-import pygame.image
+import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
-
-from src.CONST import MENU_OPTION, COLOR_WHITE, COLOR_YELLOW
+from src.CONST import MENU_OPTION, COLOR_WHITE, COLOR_YELLOW, WIN_WIDTH
 
 
 class Menu:
-    def __init__(self,window):
-        self.window=window
-        self.surf= pygame.image.load("./assets/backgrounds/PRE_ORIG_SIZE.png").convert_alpha()
-        self.rect = self.surf.get_rect(left=0, top=0)
+    def __init__(self, window):
+        self.window = window
 
-        # Surface (Superficie) = imagem, visual
-        #rect (retangulo) = Caixa invisivel que envolve a imagem (a posição fisica).
+        # Carregamento separado para evitar sobreposição
+        self.bg_surf = pygame.image.load("./assets/backgrounds/orig_lightning.png").convert_alpha()
+        self.logo_surf = pygame.image.load("./assets/GUI/logo.png").convert_alpha()
 
-        # rect seria formado pelo plano cartesiano, X e Y, mas representados ao contrário,
-        # com cordenadas positivas começando do canto superior esquerdo e aumentando pela tela,
-        # usando eixos negativos para fazer objetos sumirem ou aparecerem
-
-
-        # get (do inglês, pegar/obter) = usado quando uma função simplesmente serve para
-        # buscar, extrair ou ler informação dentro do objeto, ela começa com "get";
-
-        # O Python não adota a escrita camelCase, então usa underscore ("_") por regra visual
-
-    def run(self, dt=0):
-
-        menu_option = 0
-        # Pq isso aqui funcionou?
+        # Definição dos retângulos de posicionamento
+        self.bg_rect = self.bg_surf.get_rect(topleft=(0, 0))
+        self.logo_rect = self.logo_surf.get_rect(center=(WIN_WIDTH // 2, 80))
 
         pygame.mixer_music.load("./assets/soundtrack/oliver siimon - epic cinematic background music 2 a major 85.mp3")
         pygame.mixer_music.play(-1)
 
-        # pacote/biblioteca;submodulo da biblioteca; metodo ou função
-        # Mas pq -1? representa o infinito ou "por tempo indeterminado" quando se fala de repetições
-        # Quando escolhe numeros a partir do zero, indica quantas vezes vai tocar, emtão há limites:
-        # 0 = 1 vez; 1 = 2 vezes; ...
+        self.menu_option = 0
 
+    def run(self, dt, events):
+        # 1. Renderização de cenário
+        self.window.blit(self.bg_surf, self.bg_rect)
+        self.window.blit(self.logo_surf, self.logo_rect)
 
-        while True:
-            self.window.blit(source=self.surf, dest=self.rect)
-            # O que é blit?
-            # Abreviação do termo BitLit Image Transfer (Transferência de Imagem por Blocos de Bits).
-            # no dia a dia do desenvolvimento, blit significa "desenhar", "carimbar" ou "copiar"
-            # os pixels de uma imagem em cima de outra tela.
+        # 2. Lógica de Título e Opções
+        self.menu_text(60, "Storm Warden", (255, 174, 0), (WIN_WIDTH // 2, 70))
 
-            self.menu_text(50,"Storm Warden",(255,174,0), ((576/2), 70))
-            # Primeiro o comando do background para dps por o texto
+        mouse_pos = pygame.mouse.get_pos()
+        rects_das_opcoes = []
 
+        for i, option in enumerate(MENU_OPTION):
+            posicao_centro = (WIN_WIDTH // 2, 180 + 50 * i)
+            cor = COLOR_YELLOW if i == self.menu_option else COLOR_WHITE
 
-            for i in range(len(MENU_OPTION)):
-                if i == menu_option:
-                    self.menu_text(20,MENU_OPTION[i],(COLOR_YELLOW), ((576/2), 200+30 * i))
+            opcao_rect = self.menu_text(28, option, cor, posicao_centro)
+            rects_das_opcoes.append(opcao_rect)
 
-                else:
-                    self.menu_text(20,MENU_OPTION[i],(COLOR_WHITE), ((576/2), 200+30 * i))
-            pygame.display.flip()
+            if opcao_rect.collidepoint(mouse_pos):
+                self.menu_option = i
 
+        # 3. Processamento de eventos
+        for event in events:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_DOWN:
+                    self.menu_option = (self.menu_option + 1) % len(MENU_OPTION)
+                elif event.key == pygame.K_UP:
+                    self.menu_option = (self.menu_option - 1) % len(MENU_OPTION)
+                elif event.key == pygame.K_RETURN:
+                    return MENU_OPTION[self.menu_option]
 
+            if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+                for i, opcao_rect in enumerate(rects_das_opcoes):
+                    if opcao_rect.collidepoint(mouse_pos):
+                        return MENU_OPTION[i]
 
+        return None
 
-
-            # Check for all events / Confira todos os eventos
-            for events in pygame.event.get():
-                if events.type == pygame.QUIT:
-                    pygame.quit()  # Close Window
-                    quit()  # end pygame / Alt + F4 tbm funciona
-
-                if events.type == pygame.KEYDOWN:
-                    if events.key == pygame.K_DOWN:
-                        if menu_option < len(MENU_OPTION) - 1:
-                            # len = length(comprimento)
-                            # no caso, o tamanho da tupla da CONST
-
-                            # Só está calculado com (-1) pra evitar buscar uma opção que não existe
-                            # Como len = 3 (0,1,2) --> 3-1=2 considera como casa limite
-                            menu_option += 1
-                            # Desce/soma 1 até o limite
-                        else:
-                            menu_option = 0 # aqui volta para "JOGAR"
-                    if events.key == pygame.K_UP: # A mesma coisa, porém ao contrário
-                        if menu_option > 0:
-                            menu_option -= 1
-                        else:
-                            menu_option = len(MENU_OPTION) - 1
-                            # len() seria o alcance, como tem 3 opções (0,1,2)
-                            # fica --> menu_option = 3-1= 2 --< retorna para "SAIR"
-                    if events.key == pygame.K_RETURN: #ENTER
-                        return MENU_OPTION[menu_option]
-                    # Acho q não vou usar esse comando do enter, trocar ou tirar dps
-
-
-
-
-
-
-    # o texto acaba virando uma imagem
-
-
-    # Uma função pega em videoaula para uso provisório
-    # Com o decorrer dos estudos, talvez eu altere para algo mais autoral
-    def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        # tuple = tuplas
-
-        text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
+    def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple) -> Rect:
+        text_font: Font = pygame.font.Font(None, text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
-        self.window.blit(source=text_surf, dest=text_rect)
-
+        self.window.blit(text_surf, text_rect)
+        return text_rect

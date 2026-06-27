@@ -5,22 +5,15 @@ COLOR_YELLOW = (253,255,0)
 
 
 # M
-MENU_OPTION = (
-    "JOGAR",
-    "SCORE",
-    "SAIR"
-)
+# No seu arquivo src/CONST.py
+MENU_OPTION = ("Jogar", "Como jogar", "Sair")
 
-# E
+# E  # Essa constante aqui
 ENTITY_SPEED = {
     'Level1Bg0': 0,
     'Level1Bg1': 1,
     'Level1Bg2': 2,
     'Level1Bg3': 3,
-    'Level1Bg4': 4,
-    'Level1Bg5': 5,
-    'Level1Bg6': 6,
-    "Player": 3,
 }
 
 
