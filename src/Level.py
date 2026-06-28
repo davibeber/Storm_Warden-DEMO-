@@ -43,8 +43,6 @@ class Level:
         self.mediator.register_player(self.player)
         self.camera_maxima = (len(self.platform_list) * 128) - WIN_WIDTH
 
-        # Zona morta: player anda livre entre MARGEM_ESQUERDA e MARGEM_DIREITA
-        # A câmera só se move quando ele sai dessa faixa
         self.MARGEM_ESQUERDA = 150
         self.MARGEM_DIREITA = WIN_WIDTH - 150
 
@@ -72,13 +70,10 @@ class Level:
         return None
 
     def update_camera(self):
-        # Câmera avança quando player passa da borda direita da zona livre
         if self.player.rect.x > self.MARGEM_DIREITA:
             deslocamento = self.player.rect.x - self.MARGEM_DIREITA
             self.camera_x = min(self.camera_x + deslocamento, self.camera_maxima)
             self.player.rect.x = self.MARGEM_DIREITA
-
-        # Câmera recua quando player passa da borda esquerda da zona livre
         elif self.player.rect.x < self.MARGEM_ESQUERDA and self.camera_x > 0:
             deslocamento = self.MARGEM_ESQUERDA - self.player.rect.x
             self.camera_x = max(self.camera_x - deslocamento, 0)
@@ -93,9 +88,19 @@ class Level:
         for pfr in self.platform_list:
             self.window.blit(pfr.surf, (pfr.rect.x - self.camera_x, pfr.rect.y))
 
+        # Poções
+        for potion in self.mediator.potion_list:
+            self.window.blit(potion.surf, (potion.rect.x - self.camera_x, potion.rect.y))
+
+        # Orcs
         for enemy in self.mediator.enemy_list:
             if enemy.surf:
                 self.window.blit(enemy.surf, (enemy.rect.x - self.camera_x, enemy.rect.y))
+
+        # Boss
+        if self.mediator.boss and self.mediator.boss.surf:
+            b = self.mediator.boss
+            self.window.blit(b.surf, (b.rect.x - self.camera_x, b.rect.y))
 
         self.player.draw()
 
