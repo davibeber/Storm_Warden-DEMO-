@@ -46,6 +46,11 @@ class Level:
         self.MARGEM_ESQUERDA = 150
         self.MARGEM_DIREITA = WIN_WIDTH - 150
 
+        # Pequeno delay antes de mudar de tela ao morrer/vencer (ms)
+        self._delay_transicao = 1500
+        self._timer_transicao = 0
+        self._transicao_pendente = None  # "GAME_OVER" ou "WIN"
+
     def run(self, dt, events):
         for event in events:
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
@@ -65,6 +70,22 @@ class Level:
             self.player.move()
             self.update_camera()
             self.mediator.update(dt, self.camera_x)
+
+            # --- Detecta fim de jogo ---
+            if self._transicao_pendente is None:
+                if self.player.morto:
+                    self._transicao_pendente = "GAME_OVER"
+                elif (
+                    self.mediator.boss_spawnado
+                    and self.mediator.boss is None
+                ):
+                    self._transicao_pendente = "WIN"
+
+            # --- Conta delay antes de trocar de tela ---
+            if self._transicao_pendente:
+                self._timer_transicao += dt
+                if self._timer_transicao >= self._delay_transicao:
+                    return self._transicao_pendente
 
         self.render_game()
         return None
@@ -88,16 +109,13 @@ class Level:
         for pfr in self.platform_list:
             self.window.blit(pfr.surf, (pfr.rect.x - self.camera_x, pfr.rect.y))
 
-        # Poções
         for potion in self.mediator.potion_list:
             self.window.blit(potion.surf, (potion.rect.x - self.camera_x, potion.rect.y))
 
-        # Orcs
         for enemy in self.mediator.enemy_list:
             if enemy.surf:
                 self.window.blit(enemy.surf, (enemy.rect.x - self.camera_x, enemy.rect.y))
 
-        # Boss
         if self.mediator.boss and self.mediator.boss.surf:
             b = self.mediator.boss
             self.window.blit(b.surf, (b.rect.x - self.camera_x, b.rect.y))

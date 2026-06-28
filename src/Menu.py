@@ -8,25 +8,23 @@ class Menu:
     def __init__(self, window):
         self.window = window
 
-        # Carregamento separado para evitar sobreposição
         self.bg_surf = pygame.image.load("./assets/backgrounds/PRE_ORIG_SIZE.png").convert_alpha()
         self.logo_surf = pygame.image.load("./assets/GUI/logo.png").convert_alpha()
 
-        # Definição dos retângulos de posicionamento
         self.bg_rect = self.bg_surf.get_rect(topleft=(0, 0))
         self.logo_rect = self.logo_surf.get_rect(center=(WIN_WIDTH // 2, 80))
 
+        # Para música — garante que qualquer música anterior pare antes de carregar
+        pygame.mixer_music.stop()
         pygame.mixer_music.load("./assets/soundtrack/oliver siimon - epic cinematic background music 2 a major 85.mp3")
         pygame.mixer_music.play(-1)
 
         self.menu_option = 0
 
     def run(self, dt, events):
-        # 1. Renderização de cenário
         self.window.blit(self.bg_surf, self.bg_rect)
         self.window.blit(self.logo_surf, self.logo_rect)
 
-        # 2. Lógica de Título e Opções
         self.menu_text(60, "Storm Warden", (255, 174, 0), (WIN_WIDTH // 2, 70))
 
         mouse_pos = pygame.mouse.get_pos()
@@ -42,7 +40,6 @@ class Menu:
             if opcao_rect.collidepoint(mouse_pos):
                 self.menu_option = i
 
-        # 3. Processamento de eventos
         for event in events:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:

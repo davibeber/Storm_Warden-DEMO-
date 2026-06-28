@@ -64,7 +64,7 @@ class EntityFactory:
                 return btn_obj
 
             case "quit_hover":
-                caminho = "./assets/GUI/quit_hover.png"
+                caminho = "./assets/gameover/quit_hover.png"
                 sprite = pygame.image.load(caminho).convert_alpha()
                 btn_obj = Background(caminho, (0, 0))
                 btn_obj.surf = sprite
@@ -72,8 +72,37 @@ class EntityFactory:
                 return btn_obj
 
 
-            case "start":
-                caminho="./assets/GUI/start.png"
+            case "header_lose":
+                caminho = "./assets/gameover/header_lose.png"
+                sprite = pygame.image.load(caminho).convert_alpha()
+                btn_obj = Background(caminho, (0, 0))
+                btn_obj.surf = sprite
+                btn_obj.rect = sprite.get_rect()
+                return btn_obj
+
+            case "start_BTN":
+                caminho = "./assets/gameover/start_BTN.png"
+                sprite = pygame.image.load(caminho).convert_alpha()
+                btn_obj = Background(caminho, (0, 0))
+                btn_obj.surf = sprite
+                btn_obj.rect = sprite.get_rect()
+                return btn_obj
+
+            case "header_win":
+                caminho = "./assets/gameover/header_win.png"
+                sprite = pygame.image.load(caminho).convert_alpha()
+                btn_obj = Background(caminho, (0, 0))
+                btn_obj.surf = sprite
+                btn_obj.rect = sprite.get_rect()
+                return btn_obj
+
+            case "exit_BTN":
+                caminho = "./assets/gameover/exit_BTN.png"
+                sprite = pygame.image.load(caminho).convert_alpha()
+                btn_obj = Background(caminho, (0, 0))
+                btn_obj.surf = sprite
+                btn_obj.rect = sprite.get_rect()
+                return btn_obj
 
             # --- Cenário ---
             case "Level1Bg":
