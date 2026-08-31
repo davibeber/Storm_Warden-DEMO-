@@ -41,6 +41,7 @@ O objetivo principal deste projeto foi aplicar na prática conceitos essenciais 
 ![Level 1](assets/screenshots/inicio.png)
 
 ![Orcs](assets/screenshots/onda.png)
+
 ![Jogador se defendendo](assets/screenshots/defesa.png)
 
 ![Poção de cura](assets/screenshots/cura.png)
@@ -73,7 +74,7 @@ pode demorar alguns minutos.
 4. Se tudo der certo, você terá dentro da pasta do projeto, uma pasta chamada dist.
 Nela terá o executável compilado do seu projeto.
 
-5. Mas ele não vai funcionar, pois seu jogo tem imagens e sons, esses
+5. Mas ele não vai funcionar, pois o jogo tem imagens e sons, esses
 arquivos que não são códigos (imagens e sons) não são compilados pelo PyInstaller.
 Então é necessário que você copie e cole a pasta assets ao lado do arquivo exe.
 Por que ao lado? Porque a localização da pasta assets é ao lado do script main.py
