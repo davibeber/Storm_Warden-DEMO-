@@ -5,7 +5,7 @@ Uma demonstração de jogo 2D desenvolvida como projeto acadêmico para praticar
 ## 👥 Créditos e Atribuições
 
 Todos os *assets* e *sprites* utilizados no projeto possuem licença **CC0 (Domínio Público)**. 
-Para conferir os sites e autores de onde os recursos foram retirados, acesse o arquivo de [Créditos](CREDITS.txt).
+Para conferir os sites e autores de onde os recursos foram retirados, acesse [Créditos](CREDITS.txt).
 
 
 Compatibilidade: Desenvolvido exclusivamente para ambientes desktop (Testado em Windows). 
@@ -29,6 +29,31 @@ O objetivo principal deste projeto foi aplicar na prática conceitos essenciais 
 * **IDE:** Pycharm 2026.1
 * **Linguagem:** Python 3.12
 * **Biblioteca:** Pygame 2.6.1
+
+---
+
+## Imagens da Demo
+
+
+
+![Menu do jogo](assets/screenshots/menu.png)
+
+![Level 1](assets/screenshots/inicio.png)
+
+![Orcs](assets/screenshots/onda.png)
+![Jogador se defendendo](assets/screenshots/defesa.png)
+
+![Poção de cura](assets/screenshots/cura.png)
+
+![Boss do Level 1](assets/screenshots/boss.png)
+
+
+
+
+
+
+
+
 
 ---
 
