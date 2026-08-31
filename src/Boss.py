@@ -4,7 +4,7 @@ from src.EntityFactory import EntityFactory
 
 
 class Boss(Enemy):
-    """Orc Berserk — boss que aparece após os 10 orcs serem derrotados."""
+    # Orc Berserk — boss que aparece após os 10 orcs serem derrotados.
 
     def __init__(self, position: tuple):
         # Inicializa o Enemy base com estado idle do boss
@@ -17,7 +17,7 @@ class Boss(Enemy):
 
         self.hp_max = 200
         self.hp_atual = 200
-        self.speed = 60           # mais lento, mas mais perigoso
+        self.speed = 60
         self.velocidade = 0.08
         self.dano = 25            # usado pelo mediator ao aplicar dano ao player
 
@@ -33,7 +33,7 @@ class Boss(Enemy):
         self.rect.topleft = position
 
     # ------------------------------------------------------------------
-    # SURF — usa prefixo "B_" em vez de "orc_"
+    # SURF
     # ------------------------------------------------------------------
     @property
     def surf(self):
@@ -86,7 +86,7 @@ class Boss(Enemy):
         return int(self.index_animacao) >= self.frame_de_dano
 
     # ------------------------------------------------------------------
-    # MOVIMENTO / IA
+    # MOVIMENTO
     # ------------------------------------------------------------------
     def move(self, dt, player_real_x):
         dt_s = dt / 1000.0

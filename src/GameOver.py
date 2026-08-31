@@ -3,7 +3,7 @@ from src.CONST import BG, WIN_WIDTH, WIN_HEIGHT
 
 
 class GameOver:
-    """Tela exibida quando o jogador morre."""
+    # Tela exibida quando o jogador morre.
 
     def __init__(self, window):
         self.window = window

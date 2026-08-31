@@ -35,13 +35,13 @@ class Game:
 
             # --- LÓGICA DE TRANSIÇÃO DE TELAS ---
 
-            if result == MENU_OPTION[0]:        # "Jogar"
+            if result == MENU_OPTION[0]:        # Jogar
                 self.fase_atual = Level(self.window, "Level_1", result)
 
-            elif result == MENU_OPTION[1]:      # "Comandos e Missão"
+            elif result == MENU_OPTION[1]:      # Comandos e Missão
                 self.fase_atual = Instructions(self.window)
 
-            elif result == MENU_OPTION[2]:      # "Sair"
+            elif result == MENU_OPTION[2]:      # Sair
                 pygame.quit()
                 sys.exit()
 
@@ -54,7 +54,7 @@ class Game:
             elif result == "RESTART":           # Recomeçar do Level 1
                 self.fase_atual = Level(self.window, "Level_1", MENU_OPTION[0])
 
-            elif result == "WIN":               # Boss derrotado
+            elif result == "WIN":               # Boss foi derrotado
                 self.fase_atual = WinScreen(self.window)
 
             pygame.display.flip()

@@ -46,7 +46,7 @@ class Level:
         self.MARGEM_ESQUERDA = 150
         self.MARGEM_DIREITA = WIN_WIDTH - 150
 
-        # Pequeno delay antes de mudar de tela ao morrer/vencer (ms)
+        # Pequeno delay antes de mudar de tela ao morrer/vencer
         self._delay_transicao = 1500
         self._timer_transicao = 0
         self._transicao_pendente = None  # "GAME_OVER" ou "WIN"

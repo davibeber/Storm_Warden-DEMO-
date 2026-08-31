@@ -3,7 +3,7 @@ from src.EntityFactory import EntityFactory
 
 
 class Potion:
-    """Poção de vida que cai no chão quando um orc morre."""
+    # Poção de vida que cai no chão quando um orc morre.
 
     CURA = 30  # HP restaurado ao coletar
 

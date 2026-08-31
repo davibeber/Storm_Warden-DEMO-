@@ -92,7 +92,7 @@ class EntityMediator:
                     drop_pos = (enemy.rect.x, enemy.rect.y + 20)
                     self.potion_list.append(Potion(drop_pos))
 
-                # Boss aparece após todos os 10 orcs serem eliminados
+                # O Boss aparece após todos os 10 orcs serem eliminados
                 if self.orcs_mortos >= self.max_enemies and not self.boss_spawnado:
                     self.spawn_boss(camera_x)
                     self.boss_spawnado = True
@@ -113,7 +113,7 @@ class EntityMediator:
                 self.boss.take_damage(self.player.dano)
                 self.player.ja_causou_dano = True
 
-            # Boss ataca player
+            # Boss ataca o jogador
             if (
                 self.boss.state == "B_attack"
                 and self.boss.esta_no_frame_de_ataque()

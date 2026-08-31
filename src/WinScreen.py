@@ -3,7 +3,7 @@ from src.CONST import BG, WIN_WIDTH, WIN_HEIGHT, COLOR_WHITE
 
 
 class WinScreen:
-    """Tela exibida após derrotar o Boss."""
+    # Tela exibida após derrotar o Boss
 
     def __init__(self, window):
         self.window = window
